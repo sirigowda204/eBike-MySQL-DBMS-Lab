@@ -1,6 +1,5 @@
 # ToDo Application Using Streamlit
 
-
 A simple app which implements the CRUD functionalities.
     C - Create
     R - Read
