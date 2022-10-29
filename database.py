@@ -1,7 +1,13 @@
-import sqlite3
+# pip install mysql-connector-python
+import mysql.connector
 
-conn = sqlite3.connect("data.db", check_same_thread=False)
-c = conn.cursor()
+mydb = mysql.connector.connect(
+    host="localhost",
+    user="root",
+    password="password",
+    database="toDo"
+)
+c = mydb.cursor()
 
 
 def create_table():
@@ -9,9 +15,9 @@ def create_table():
 
 
 def add_data(task, task_status, task_due_date):
-    c.execute('INSERT INTO taskstable(task, task_status, task_due_date) VALUES (?,?,?)',
+    c.execute('INSERT INTO taskstable(task, task_status, task_due_date) VALUES (%s,%s,%s)',
               (task, task_status, task_due_date))
-    conn.commit()
+    mydb.commit()
 
 
 def view_all_data():
@@ -33,13 +39,13 @@ def get_task(task):
 
 
 def edit_task_data(new_task, new_task_status, new_task_due_date, task, task_status, task_due_date):
-    c.execute("UPDATE taskstable SET task=?, task_status=?, task_due_date=? WHERE task=? and task_status=? and "
-              "task_due_date=?", (new_task, new_task_status, new_task_due_date, task, task_status, task_due_date))
-    conn.commit()
+    c.execute("UPDATE taskstable SET task=%s, task_status=%s, task_due_date=%s WHERE task=%s and task_status=%s and "
+              "task_due_date=%s", (new_task, new_task_status, new_task_due_date, task, task_status, task_due_date))
+    mydb.commit()
     data = c.fetchall()
     return data
 
 
 def delete_data(task):
     c.execute('DELETE FROM taskstable WHERE task="{}"'.format(task))
-    conn.commit()
+    mydb.commit()

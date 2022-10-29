@@ -1,3 +1,5 @@
+import datetime
+
 import pandas as pd
 import streamlit as st
 from database import view_all_data, view_only_tasks, get_task, edit_task_data
@@ -24,7 +26,7 @@ def update():
             new_task = st.text_area("Task to do:", task)
         with col2:
             new_task_status = st.selectbox(task_status, ["To do", "Executing", "Completed"])
-            new_task_due_date = st.date_input(task_due_date)
+            new_task_due_date = st.date_input('Due Date', task_due_date)
         if st.button("Update Task"):
             edit_task_data(new_task, new_task_status, new_task_due_date, task, task_status, task_due_date)
             st.success("Successfully updated:: {} to ::{}".format(task, new_task))
