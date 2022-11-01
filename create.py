@@ -3,13 +3,14 @@ from database import add_data
 
 
 def create():
-    # Layout of Create
     col1, col2 = st.columns(2)
     with col1:
-        task = st.text_area("Task to do:")
+        dealer_id = st.text_input("ID:")
+        dealer_name = st.text_input("Name:")
     with col2:
-        task_status = st.selectbox("Status", ["To do", "Executing", "Completed"])
-        task_due_date = st.date_input("Due Date:")
-    if st.button("Add Task"):
-        add_data(task, task_status, task_due_date)
-        st.success("Successfully added task: {}".format(task))
+        dealer_city = st.selectbox("City", ["Bangalore", "Chennai", "Mumbai"])
+        dealer_pin = st.text_input("Pin Code:")
+    dealer_street = st.text_input("Street Name:")
+    if st.button("Add Dealer"):
+        add_data(dealer_id, dealer_name, dealer_city, dealer_pin, dealer_street)
+        st.success("Successfully added Dealer: {}".format(dealer_name))

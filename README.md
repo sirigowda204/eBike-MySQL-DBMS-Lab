@@ -1,7 +1,7 @@
-# ToDo Application Using Streamlit
+# eBike Application Using Streamlit
 
 ## Description 
-A simple app which implements the CRUD functionalities.
+A simple app which implements the CRUD functionalities for demo DBMS class.
 
 ```
     C - Create
@@ -9,12 +9,11 @@ A simple app which implements the CRUD functionalities.
     U - Update
     D - Delete
 ```
-It can be used to create a task along with a progress report and due-date for the said task in the to-do list, view all the curent tasks, update or delete an existing task.
 
 ## Technologies
 The project is created using: 
 * Python
 * Streamlit
-* Sqlite3
+* MySQL
 * Pandas
 * Plotly

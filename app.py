@@ -1,21 +1,31 @@
 # Importing pakages
 import streamlit as st
+import mysql.connector
 
 from create import create
-from database import create_table, add_data, view_all_data, view_only_tasks, get_task, edit_task_data, delete_data
+from database import create_table
 from delete import delete
 from read import read
 from update import update
 
+# mydb = mysql.connector.connect(
+#     host="localhost",
+#     user="root",
+#     password="password"
+# )
+# c = mydb.cursor()
+#
+# c.execute("CREATE DATABASE ebike")
+
 
 def main():
-    st.title("Scheduler App")
+    st.title("eBike App")
     menu = ["Add", "View", "Edit", "Remove"]
     choice = st.sidebar.selectbox("Menu", menu)
 
     create_table()
     if choice == "Add":
-        st.subheader("Create a task:")
+        st.subheader("Enter Dealer Details:")
         create()
 
     elif choice == "View":
